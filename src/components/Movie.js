@@ -39,6 +39,7 @@ class Movie {
         
     }
     
+    static find = (id) => this.all.find(movie => movie.data.id == id)
     
     static movieClick = (e) => {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")){
@@ -47,7 +48,19 @@ class Movie {
         }
     }
     
-    static find = (id) => this.all.find(movie => movie.data.id == id)
     
+    renderShowPage = () => {
+        const { title, summary, image, duration, id } = this.data
+        document.getElementById("list").innerHTML = `
+        <div class="show">
+        <h1>${title}</h1>
+        <img src="${image}" alt=${name}/>
+        <p> ${duration} </p>
+        <p> ${summary}</p>
+        </div>
+
+        <button id="goback">Go Back</button>`
+        document.getElementById("goback").addEventListener("click", Movie.renderMoviesPage)
+    }
     
 }

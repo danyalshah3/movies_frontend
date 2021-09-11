@@ -24,12 +24,40 @@ class Movie {
         movieContainer.classList.add("movie-Container")
         const addMovie = document.createElement("button")
         addMovie.innerText = "Add a new Movie"
+        addMovie.addEventListener("click", this.newMovieForm)
         list.append(movieContainer, addMovie)
         this.all.forEach(movie => movie.renderMovieList())
         movieContainer.addEventListener("click", this.movieClick)
     }
+
+    static newMovieForm() {
+        modal.main.innerHTML += `
+        <form>
+        <label for="title">Title:</label><br>
+        <input type="text" name="title"><br>
+        <label for="summary">Summary:</label><br>
+        <input type="text" name="summary"><br>
+        <label for="image">Image:</label><br>
+        <input type="text" name="image"><br>
+        <label for="duration">Duration:</label><br>
+        <input type="text" name="duration"><br>
+        <input type="submit" value="Add a Movie!"<br>
+         </form>
+         `
+         modal.main.querySelector("form").addEventListener("submit", this.handleSubmit)
+         modal.open()
+    }
     
-    
+    static handleSubmit = (e) => {
+        e.preventDefualt()
+        const newMovie = {
+            title: e.target.title.value,
+            summary: e.target.summary.value,
+            duration: e.target.duration.value,
+            image: e.target.image.value
+        }
+        console.log(newMovie)
+    }
     
     renderMovieList = () => {
         const { title, summary, image, duration, id } = this.data

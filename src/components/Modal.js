@@ -1,15 +1,32 @@
 class Modal {
 
-    get Modal(){
+    constructor(){
+        this.addCloseEventListener()
+    }
+
+    get modal(){
         return document.querySelector("#myModal")
     }
 
+    get main() {
+        return document.querySelector("#modal-main")
+    }
 
     open = () => {
-     this.Modal.style.display = "block"
+     this.modal.style.display = "block"
     }
 
     close = () => {
-        this.Modal.style.display = "none"
+        this.modal.style.display = "none"
     }
-}
+
+    addCloseEventListener = () => {
+        this.modal.addEventListener("click", (e) => {
+         if (e.target.classList.contains("close")){
+             this.close()
+
+         }
+        })
+    }  
+    
+}    

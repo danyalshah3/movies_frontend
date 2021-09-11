@@ -22,7 +22,9 @@ class Movie {
         list.innerHTML = ""
         const movieContainer = document.createElement("div")
         movieContainer.classList.add("movie-Container")
-        list.appendChild(movieContainer)
+        const addMovie = document.createElement("button")
+        addMovie.innerText = "Add a new Movie"
+        list.append(movieContainer, addMovie)
         this.all.forEach(movie => movie.renderMovieList())
         movieContainer.addEventListener("click", this.movieClick)
     }

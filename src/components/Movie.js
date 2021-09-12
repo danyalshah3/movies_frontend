@@ -4,6 +4,7 @@ class Movie {
     static all = []
     constructor(data) {
         this.data = data
+        this.reviews = this.data.reviews.map(review => new Review(review, this))
         this.constructor.all.push(this)
     
     }
@@ -94,10 +95,37 @@ class Movie {
         <img src="${image}" alt=${name}/>
         <p> ${duration} </p>
         <p> ${summary}</p>
+        <div class="cylinder"></div>
         </div>
-
+        <button id="addreview">Add a review</button>
         <button id="goback">Go Back</button>`
         document.getElementById("goback").addEventListener("click", Movie.renderMoviesPage)
+        document.getElementById("addreview").addEventListener("click", this.renderReviewForm)
+        this.reviews.forEach(review => review.renderAllReviews())
     }
+
+    renderReviewForm = () => {
+        modal.main.innerHTML = `
+        <form>
+        <label for="content">Content:</label><br>
+        <input type="text" name="content"><br>
+        <label for="rating">Rating:</label><br>
+        <input type="number" name="rating" min="1" max="5"><br>
+        <input type="submit" value="Add a Review!"<br>
+        </form>`
+
+        modal.open()
+        document.querySelector("form").addEventListener("submit", this.handleReviewSubmit)
+    }
+
+    handleReviewSubmit = (e) => {
+       e.preventDefault()
+       const newReview = {
+           content: e.target.content.value,
+           rating: e.target.rating.value
+       }
+      api.createReview(newReview).then(console.log)
+    }
+
     
 }

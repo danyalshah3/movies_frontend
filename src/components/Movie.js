@@ -30,8 +30,25 @@ class Movie {
         movieContainer.addEventListener("click", this.movieClick)
     }
 
-    static newMovieForm() {
-        modal.main.innerHTML += `
+
+   static handleSubmit = (e) => {
+       
+         e.preventDefault()
+         const newMovie = {
+            title: e.target.title.value,
+            summary: e.target.summary.value,
+            duration: e.target.duration.value,
+            image: e.target.image.value
+        }
+        api.createMovie(newMovie).then(movie => {
+            new Movie
+        })
+        modal.close()
+        e.target.reset()
+    }
+
+    static newMovieForm = () => {
+        modal.main.innerHTML = `
         <form>
         <label for="title">Title:</label><br>
         <input type="text" name="title"><br>
@@ -48,16 +65,6 @@ class Movie {
          modal.open()
     }
     
-    static handleSubmit = (e) => {
-        e.preventDefualt()
-        const newMovie = {
-            title: e.target.title.value,
-            summary: e.target.summary.value,
-            duration: e.target.duration.value,
-            image: e.target.image.value
-        }
-        console.log(newMovie)
-    }
     
     renderMovieList = () => {
         const { title, summary, image, duration, id } = this.data

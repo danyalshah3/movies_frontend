@@ -73,6 +73,7 @@ class Movie {
         <div class="movie-list" data-id=${id}>
         <h1 class="title">${title}</h1>
         <img src="${image}" alt=${name}/>
+        <p class="number-of-reviews">Total Reviews: ${this.reviews.length}</p>
         </div>`
         
     }
@@ -118,18 +119,20 @@ class Movie {
         document.querySelector("form").addEventListener("submit", this.handleReviewSubmit)
     }
 
+    
     handleReviewSubmit = (e) => {
-       e.preventDefault()
-       const newReview = {
-           content: e.target.content.value,
-           rating: e.target.rating.value
-       }
-      api.createReview(newReview).then(review => {
-       this.reviews
-      })
-      modal.close()
-      e.target.reset()
-    }
-
+        e.preventDefault()
+        const newReview = {
+            content: e.target.content.value,
+            rating: e.target.rating.value,
+            movie_id: this.data.id
+        }
+       api.createReview(newReview).then(review => {
+        new Review
+       })
+       
+       modal.close()
+       e.target.reset()
+     }
     
 }

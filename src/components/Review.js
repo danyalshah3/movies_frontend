@@ -16,6 +16,7 @@ class Review {
     }
 
 
+
     star = (num) => {
      let str = ""
      for(let i = 1; i <= num; i++){

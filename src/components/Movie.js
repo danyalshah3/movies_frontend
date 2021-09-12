@@ -124,7 +124,11 @@ class Movie {
            content: e.target.content.value,
            rating: e.target.rating.value
        }
-      api.createReview(newReview).then(console.log)
+      api.createReview(newReview).then(review => {
+       this.reviews
+      })
+      modal.close()
+      e.target.reset()
     }
 
     

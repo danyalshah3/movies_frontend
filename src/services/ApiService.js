@@ -23,7 +23,14 @@ class ApiService {
         },
         body: JSON.stringify(newReview),
       }).then(response => response.json())
-      
-      
+
+      findOrCreateUser = (username) => fetch(this.api + "/users", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username: username}),
+      }).then(response => response.json())
+
 }
 

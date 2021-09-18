@@ -6,11 +6,11 @@ class Review {
     }
 
     renderAllReviews = () => {
-        // console.log(this.data.rating, this.star(this.data.rating))
+        // console.log(this.data.username)
         const stars = this.star(this.data.rating)
         document.querySelector(".cylinder").innerHTML += `
         <div class="box">
-       <span><strong>Comment:</strong> ${this.data.content}, <strong>Rating:</strong> ${stars} </span>
+       <br><span><strong>User:</strong> ${this.data.username}, &nbsp; Comment:</strong> ${this.data.content}, &nbsp; <strong>Rating:</strong> ${stars} </span></br>
         </div>
         `
     }

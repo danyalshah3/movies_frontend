@@ -1,4 +1,120 @@
 
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+
+body {
+    background-color: #000000;
+    font-family: "Helvetica," sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+
+
+.movie-container {
+  /* display: table-row-group;
+  flex-wrap: wrap;
+  justify-content: space-around; */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.8); 
+    padding: 20px;
+    text-align: center; 
+    cursor: pointer; 
+  }
+
+  .number-of-reviews {
+   color: white
+  }
+
+
+  .movie-list {
+    border: 2px solid;
+    color: rgb(168, 5, 5);
+    border-radius: 1em;
+    box-sizing: content-box;
+  }
+
+  .box {
+    color: white;
+  }
+ span {
+  border: 1px solid;
+  border-radius: 2em;
+  box-sizing: content-box;
+  padding: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.8); 
+  background-color: rgb(172, 124, 4);
+ }
+
+.show img {
+  width: 650px;
+  height: 450px;
+  /* object-fit: cover; */
+}
+
+img {
+  width: 350px;
+  height: 250px;
+  /* object-fit: cover; */
+  cursor: pointer;
+}
+
+
+
+.movie-info h3 {
+    margin: 0;
+}
+
+.movie-info span {
+    background-color: #22254b;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+}
+.movie-info span.green {
+    color: rgb(39, 189, 39);
+}
+
+.movie-info span.orange {
+    color: orange;
+}
+
+.movie-info span.red {
+    color: rgb(189, 42, 42);
+}
+
+.overview {
+    background-color: #fff;
+    padding: 2rem;
+    position: absolute;
+    max-height: 100%;
+    overflow: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+}
+
+.overview h3 {
+    margin-top: 0;
+}
+
+.movie:hover .overview {
+    transform: translateY(0);
+} 
 
 
 
@@ -21,19 +137,24 @@
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-color: rgb(83, 81, 81);
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid black;
+    border-radius: 1em;
     width: 80%; /* Could be more or less, depending on screen size */
   }
   
   /* The Close Button */
   .close {
-    color: #aaa;
+    color: red;
     float: right;
     font-size: 28px;
     font-weight: bold;
+  }
+
+  label {
+    color: goldenrod;
   }
   
   .close:hover,
@@ -46,3 +167,4 @@
   #movie-Container {
     cursor: pointer;
   }
+

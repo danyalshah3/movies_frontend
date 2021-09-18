@@ -59,7 +59,7 @@ class Movie {
         <input type="text" name="image"><br>
         <label for="duration">Duration:</label><br>
         <input type="text" name="duration"><br>
-        <input type="submit" value="Add a Movie!"<br>
+        <input type="submit" value="Add a Movie!"><br>
          </form>
          `
          modal.main.querySelector("form").addEventListener("submit", this.handleSubmit)
@@ -97,8 +97,8 @@ class Movie {
         <p> ${duration} </p>
         <p> ${summary}</p>
         <div class="cylinder"></div>
-        </div>
-        <button id="addreview">Add a review</button>
+        </div><br>
+        <button id="addreview">Add a review</button><br>
         <button id="goback">Go Back</button>`
         document.getElementById("goback").addEventListener("click", Movie.renderMoviesPage)
         document.getElementById("addreview").addEventListener("click", this.renderReviewForm)
@@ -112,7 +112,7 @@ class Movie {
         <input type="text" name="content"><br>
         <label for="rating">Rating:</label><br>
         <input type="number" name="rating" min="1" max="5"><br>
-        <input type="submit" value="Add a Review!"<br>
+        <input type="submit" value="Add a Review!"><br>
         </form>`
 
         modal.open()

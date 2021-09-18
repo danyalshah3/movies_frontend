@@ -11,5 +11,5 @@ function handleUsernameSubmit(e) {
     const newUser = {
         username: e.target.username.value 
     }
-    api.findOrCreateUser(username).then(console.log)
+    api.findOrCreateUser(username).then(console.lo)
 }

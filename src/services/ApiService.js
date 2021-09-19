@@ -16,13 +16,16 @@ class ApiService {
       }).then(response => response.json())
     
     
-      createReview = (newReview) => fetch(this.api + "/reviews", {
+      createReview = (newReview) => {
+           newReview.user_id = user.id 
+           return fetch(this.api + "/reviews", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(newReview),
       }).then(response => response.json())
+    }
 
       findOrCreateUser = (username) => fetch(this.api + "/users", {
         method: 'POST',
@@ -31,6 +34,6 @@ class ApiService {
         },
         body: JSON.stringify({username: username}),
       }).then(response => response.json())
-
+    
 }
 

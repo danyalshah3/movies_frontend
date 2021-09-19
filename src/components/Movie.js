@@ -11,6 +11,7 @@ class Movie {
 
     static getMovies = () => {
         api.getMovies().then(movies => {
+            Movie.all = []
             movies.forEach(movie => new Movie(movie))
             this.renderMoviesPage()
         })
@@ -21,6 +22,10 @@ class Movie {
     static renderMoviesPage = () => {
         const list = document.getElementById("list")
         list.innerHTML = ""
+        document.querySelector(".newUser").innerHTML = ""
+        // const userNew = document.createElement("button")
+        // userNew.innerText = "Start Surfing"
+        // userNew.addEventListener("click", this.newUserForm)
         const movieContainer = document.createElement("div")
         movieContainer.classList.add("movie-Container")
         const addMovie = document.createElement("button")
@@ -133,6 +138,7 @@ class Movie {
        
        modal.close()
        e.target.reset()
+       
      }
-    
+   
 }

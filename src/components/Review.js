@@ -1,6 +1,7 @@
 class Review {
 
     constructor(data, movie){
+        console.log(data, movie)
      this.data = data
      this.movie = movie
     }

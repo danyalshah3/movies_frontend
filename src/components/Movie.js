@@ -11,29 +11,29 @@ class Movie {
 
     static getMovies = () => {
         api.getMovies().then(movies => {
-            Movie.all = []
-            movies.forEach(movie => new Movie(movie))
+            // Movie.all = []
+            movies.forEach(movie => {
+                new Movie(movie)})
             this.renderMoviesPage()
         })
     }
 
     
     
-    static renderMoviesPage = () => {
-        const list = document.getElementById("list")
-        list.innerHTML = ""
-        document.querySelector(".newUser").innerHTML = ""
-        // const userNew = document.createElement("button")
-        // userNew.innerText = "Start Surfing"
-        // userNew.addEventListener("click", this.newUserForm)
-        const movieContainer = document.createElement("div")
-        movieContainer.classList.add("movie-Container")
-        const addMovie = document.createElement("button")
-        addMovie.innerText = "Add a new Movie"
-        addMovie.addEventListener("click", this.newMovieForm)
-        list.append(movieContainer, addMovie)
-        this.all.forEach(movie => movie.renderMovieList())
-        movieContainer.addEventListener("click", this.movieClick)
+       static renderMoviesPage = () => {
+           const list = document.getElementById("list")
+           list.innerHTML = ""
+           document.querySelector(".newUser").innerHTML = ""
+           const movieContainer = document.createElement("div")
+           movieContainer.classList.add("movie-container")
+           const addMovie = document.createElement("button")
+           addMovie.innerText = "Add a new Movie"
+           addMovie.addEventListener("click", this.newMovieForm)
+           list.append(movieContainer, addMovie)
+           this.all.forEach(movie => movie.renderMovieList())
+           movieContainer.addEventListener("click", this.movieClick)
+           
+        
     }
 
 
@@ -47,7 +47,8 @@ class Movie {
             image: e.target.image.value
         }
         api.createMovie(newMovie).then(movie => {
-            new Movie
+           let c = new Movie(movie)
+           c.renderMovieList()
         })
         modal.close()
         e.target.reset()
@@ -74,7 +75,7 @@ class Movie {
     
     renderMovieList = () => {
         const { title, summary, image, duration, id } = this.data
-        document.querySelector(".movie-Container").innerHTML += `
+        document.querySelector(".movie-container").innerHTML += `
         <div class="movie-list" data-id=${id}>
         <h1 class="title">${title}</h1>
         <img src="${image}" alt=${name}/>
@@ -94,20 +95,27 @@ class Movie {
     
     
     renderShowPage = () => {
-        const { title, summary, image, duration, id } = this.data
-        document.getElementById("list").innerHTML = `
-        <div class="show">
-        <h1>${title}</h1>
-        <img src="${image}" alt=${name}/>
-        <p> ${duration} </p>
-        <p> ${summary}</p>
-        <div class="cylinder"></div>
-        </div><br>
-        <button id="addreview">Add a review</button><br>
-        <button id="goback">Go Back</button>`
+        const { title, summary, image, duration } = this.data
+       const list = document.getElementById("list")
+       list.innerHTML = `
+       <div class="show">
+       <h1>${title}</h1>
+       <img src="${image}" alt=${name}/>
+       <p> ${duration} </p>
+       <p> ${summary}</p>
+       <div class="cylinder"></div>
+       </div><br>
+       <button id="addreview">Add a review</button><br>
+       <button id="goback">Go Back</button>`
+    //    const addReview = document.createElement("button")
+    //       addReview.innerText = "Add-Review"
         document.getElementById("goback").addEventListener("click", Movie.renderMoviesPage)
         document.getElementById("addreview").addEventListener("click", this.renderReviewForm)
-        this.reviews.forEach(review => review.renderAllReviews())
+        // list.append(addReview)
+        // console.log(addReview)
+        this.reviews.forEach(review => {
+            review.renderAllReviews()
+        })
     }
 
     renderReviewForm = () => {
@@ -133,12 +141,12 @@ class Movie {
             movie_id: this.data.id
         }
        api.createReview(newReview).then(review => {
-        new Review
+        let r =  new Review(review)
+        r.renderAllReviews()
+        //  console.log(review)
        })
        
        modal.close()
        e.target.reset()
-       
      }
-   
 }

@@ -12,7 +12,7 @@ function handleUsernameSubmit(e) {
     document.getElementById("list").innerHTML = ""
     api.findOrCreateUser(e.target.username.value).then(userData => {
         user = userData
-        Movie.getMovies()
+        Movie.getMovies() 
     })
 }
 

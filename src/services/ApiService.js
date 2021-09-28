@@ -6,6 +6,7 @@ class ApiService {
 
     getMovies = () => fetch(this.api + "/movies").then(resp => resp.json())
 
+     getReviews = () => fetch(this.api + "/reviews").then(resp => resp.json())
 
     createMovie = (newMovie) => fetch(this.api + "/movies", {
         method: 'POST',
@@ -18,6 +19,7 @@ class ApiService {
     
       createReview = (newReview) => {
            newReview.user_id = user.id 
+           // console.log(this.data)
            return fetch(this.api + "/reviews", {
         method: 'POST',
         headers: {
@@ -25,6 +27,7 @@ class ApiService {
         },
         body: JSON.stringify(newReview),
       }).then(response => response.json())
+    
     }
 
       findOrCreateUser = (username) => fetch(this.api + "/users", {
@@ -35,5 +38,9 @@ class ApiService {
         body: JSON.stringify({username: username}),
       }).then(response => response.json())
     
+
+    
+  
+ 
 }
 

@@ -1,4 +1,4 @@
-const api = new ApiService("http://localhost:3000")
+const api = new ApiService("https://movieboxjs.herokuapp.com/")
 const modal = new Modal()
 
 let user
